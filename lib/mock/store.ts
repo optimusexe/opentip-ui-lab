@@ -4,6 +4,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ADDR } from "@/lib/constants";
 import { fakeHash, splitAmount, tokenUsd } from "@/lib/format";
+import { placeholderRepo } from "@/lib/mock/placeholder";
 import { createSeed } from "@/lib/mock/seed";
 import type {
   DemoData,
@@ -170,7 +171,7 @@ export const useDemo = create<DemoState>()(
             s.fundings.filter((f) => f.repoId === repoId).map((f) => f.tipperAddress.toLowerCase()),
           );
           const fresh = !seen.has(from.toLowerCase());
-          const owner = s.repos.find((r) => r.repoId === repoId)?.owner;
+          const owner = s.repos.find((r) => r.repoId === repoId)?.owner ?? repoId.split("/")[0];
           const maintainerUser = s.users.find((u) => u.login === owner);
           const usd = tokenUsd(amount, token);
           return {
@@ -190,7 +191,10 @@ export const useDemo = create<DemoState>()(
               },
               ...s.fundings,
             ],
-            repos: s.repos.map((r) =>
+            repos: (s.repos.some((r) => r.repoId === repoId)
+              ? s.repos
+              : [...s.repos, placeholderRepo(repoId.split("/")[0] ?? "unknown", repoId.split("/")[1] ?? repoId)]
+            ).map((r) =>
               r.repoId === repoId
                 ? {
                     ...r,

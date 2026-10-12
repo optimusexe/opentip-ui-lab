@@ -13,16 +13,21 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatToken, formatUsd, tokenUsd } from "@/lib/format";
+import { placeholderRepo } from "@/lib/mock/placeholder";
 import { pendingOf, pendingUsd, useDemo } from "@/lib/mock/store";
 import { useSession } from "@/lib/mock/use-session";
-import type { Token } from "@/lib/mock/types";
+import { parseGithubRepo } from "@/lib/parse-repo";
+import type { Repo, Token } from "@/lib/mock/types";
 
 export default function RepoPage({ params }: { params: Promise<{ owner: string; repo: string }> }) {
   const { owner, repo } = use(params);
   const repoId = `${decodeURIComponent(owner)}/${decodeURIComponent(repo)}`;
   const repos = useDemo((s) => s.repos);
   const allFundings = useDemo((s) => s.fundings);
-  const record = repos.find((item) => item.repoId.toLowerCase() === repoId.toLowerCase());
+  const parsed = parseGithubRepo(repoId);
+  const record =
+    repos.find((item) => item.repoId.toLowerCase() === repoId.toLowerCase()) ??
+    (parsed ? placeholderRepo(parsed.owner, parsed.repo) : undefined);
   const fundings = useMemo(
     () => allFundings.filter((item) => item.repoId.toLowerCase() === repoId.toLowerCase()),
     [allFundings, repoId],
@@ -34,9 +39,9 @@ export default function RepoPage({ params }: { params: Promise<{ owner: string; 
     return (
       <AppShell center={`opentip.tech/${repoId}`}>
         <div className="mx-auto flex max-w-lg flex-col items-start gap-4 py-16">
-          <p className="font-display text-4xl">Not claimed yet.</p>
+          <p className="font-display text-4xl">Not a repository.</p>
           <p className="text-muted-foreground">
-            {repoId} is not in this demo ledger. You can still open the page pattern: funds would wait in the contract until a maintainer registers.
+            {repoId} is not an owner/repo path. Open a page like opentip.tech/vercel/next.js.
           </p>
           <Button render={<Link href="/repos" />}>Browse repos</Button>
         </div>
@@ -131,7 +136,7 @@ export default function RepoPage({ params }: { params: Promise<{ owner: string; 
         </div>
         <div className="order-1 flex flex-col gap-4 lg:order-2">
           <FundPanel repoId={record.repoId} />
-          <MaintainerCard repoId={record.repoId} />
+          <MaintainerCard repo={record} />
         </div>
       </div>
       <p className="sr-only">Signed in as {session.user?.login ?? "guest"}</p>
@@ -162,11 +167,10 @@ function Stat({
   );
 }
 
-function MaintainerCard({ repoId }: { repoId: string }) {
+function MaintainerCard({ repo }: { repo: Repo }) {
   const router = useRouter();
   const session = useSession();
-  const repo = useDemo((s) => s.repos.find((item) => item.repoId === repoId));
-  const verified = useDemo((s) => (session.user ? (s.verified[session.user.id] ?? []).includes(repoId) : false));
+  const verified = useDemo((s) => (session.user ? (s.verified[session.user.id] ?? []).includes(repo.repoId) : false));
   const verifyRepo = useDemo((s) => s.verifyRepo);
   const registerRepo = useDemo((s) => s.registerRepo);
   const claim = useDemo((s) => s.claim);
@@ -178,7 +182,6 @@ function MaintainerCard({ repoId }: { repoId: string }) {
   const [busy, setBusy] = useState<"register" | "claim" | null>(null);
   const [payout, setPayout] = useState(session.primary?.address ?? "");
 
-  if (!repo) return null;
   const isOwner = Boolean(session.user?.login && session.user.login === repo.owner);
   const tokens = (["USDC", "ETH"] as Token[]).filter((token) => pendingOf(state, repo.repoId, token) > 0);
 
@@ -193,7 +196,7 @@ function MaintainerCard({ repoId }: { repoId: string }) {
       return;
     }
     if (session.linked.length === 0) return;
-    verifyRepo(session.user.id, repo!.repoId);
+    verifyRepo(session.user.id, repo.repoId);
     toast.success("Ownership verified");
   }
 
@@ -209,7 +212,7 @@ function MaintainerCard({ repoId }: { repoId: string }) {
     }
     setBusy("register");
     await wait(1400);
-    const hash = registerRepo({ repoId: repo!.repoId, payoutAddress: payout, from: session.address });
+    const hash = registerRepo({ repoId: repo.repoId, payoutAddress: payout, from: session.address });
     setBusy(null);
     toast.success("Registered");
     router.push(`/explorer/${hash}`);
@@ -227,7 +230,7 @@ function MaintainerCard({ repoId }: { repoId: string }) {
     }
     setBusy("claim");
     await wait(1500);
-    const receipts = claim({ repoId: repo!.repoId, from: session.address, tokens });
+    const receipts = claim({ repoId: repo.repoId, from: session.address, tokens });
     setBusy(null);
     if (receipts[0]) router.push(`/receipt/${receipts[0].id}`);
   }

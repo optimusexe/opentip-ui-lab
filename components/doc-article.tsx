@@ -1,13 +1,23 @@
 import Link from "next/link";
 import { docs, docNav } from "@/lib/docs";
+import { cn } from "cn";
 
 export function DocsFrame({ slug }: { slug: string }) {
   const page = docs.find((item) => item.slug === slug) ?? docs[0];
+  const current = slug === "index" ? "/docs" : `/docs/${slug}`;
   return (
     <div className="grid gap-8 lg:grid-cols-[200px_minmax(0,1fr)]">
-      <nav className="flex flex-col gap-1" aria-label="Docs">
+      <nav className="-mx-1 flex gap-1 overflow-x-auto pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:pb-0" aria-label="Docs">
         {docNav.map(([label, href]) => (
-          <Link key={href} href={href} className="rounded-lg px-2 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
+          <Link
+            key={href}
+            href={href}
+            aria-current={href === current ? "page" : undefined}
+            className={cn(
+              "shrink-0 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap hover:bg-muted hover:text-foreground lg:whitespace-normal",
+              href === current ? "bg-muted text-foreground" : "text-muted-foreground",
+            )}
+          >
             {label}
           </Link>
         ))}
