@@ -44,7 +44,7 @@ export default function HomePage() {
   const rows = useMemo(() => fundings.filter((item) => item.repoId === "vercel/next.js").slice(0, 4), [fundings]);
 
   return (
-    <AppShell>
+    <AppShell footer>
       <section className="grid min-w-0 items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
         <div className="flex min-w-0 flex-col gap-6 pt-2">
           <h1 className="font-display text-[2.7rem] leading-[0.92] text-balance sm:text-6xl lg:text-[4.4rem]">

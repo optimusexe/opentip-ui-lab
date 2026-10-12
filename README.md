@@ -40,6 +40,6 @@ Press `⌘K` (or `Ctrl+K`) to search. The bar strikes through `github.com` and r
 
 ## Routes
 
-Public: `/`, `/[owner]/[repo]`, `/repos`, `/leaderboard`, `/activity`, `/dev/[login]`, `/signin`, `/forgot-password`, `/reset-password`, `/verify-email`, `/onboarding`, `/dashboard`, `/dashboard/repos`, `/dashboard/github-repos`, `/dashboard/wallets`, `/dashboard/notifications`, `/notifications`, `/wallet`, `/wallet/security`, `/install`, `/docs` and the ten doc pages, `/legal/terms`, `/legal/privacy`, `/receipt/[id]`, `/explorer/[hash]`, and the 404 page.
+Public: `/`, `/[owner]/[repo]`, `/repos`, `/leaderboard`, `/activity`, `/dev/[login]`, `/signin`, `/forgot-password`, `/reset-password`, `/verify-email`, `/onboarding`, `/dashboard`, `/dashboard/repos`, `/dashboard/github-repos`, `/dashboard/wallets`, `/dashboard/notifications`, `/notifications`, `/wallet`, `/wallet/security`, `/install`, `/docs` and the ten doc pages, `/terms`, `/privacy`, `/receipt/[id]`, `/explorer/[hash]`, and the 404 page. The footer is only on `/`, the 404 page, `/terms`, and `/privacy`.
 
 Admin, read-only: `/admin`, `/admin/contract`, `/admin/registrar`, `/admin/repos`, `/admin/sponsorship`, `/admin/tokens`, `/admin/users`, `/admin/admins`, `/admin/migrate`, `/admin/activity`.

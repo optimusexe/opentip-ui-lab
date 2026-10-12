@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import { cn } from "cn";
-import { SiteFooter } from "@/components/site-footer";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -31,7 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={cn(sans.variable, mono.variable, display.variable)} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <Providers>{children}</Providers>
-        <SiteFooter />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ export function SiteFooter() {
             ["support@opentip.tech", "mailto:support@opentip.tech"],
           ]}
         />
-        <FooterCol title="Legal" links={[["Terms", "/legal/terms"], ["Privacy", "/legal/privacy"], ["Install", "/install"]]} />
+        <FooterCol title="Legal" links={[["Terms", "/terms"], ["Privacy", "/privacy"]]} />
       </div>
       <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between px-4 pb-8 text-xs text-muted-foreground">
         <p>© 2026 Opentip</p>
