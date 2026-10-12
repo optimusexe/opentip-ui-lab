@@ -198,9 +198,7 @@ export function FundPanel({ repoId }: { repoId: string }) {
           {label}
         </Button>
       )}
-      <p className="mt-3 text-center text-xs text-muted-foreground">
-        No account needed. Held by the contract on Base until maintainers claim.
-      </p>
+      <p className="mt-3 text-center text-xs text-muted-foreground">No account needed.</p>
     </section>
   );
 }
