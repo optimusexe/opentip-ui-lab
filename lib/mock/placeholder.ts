@@ -9,7 +9,7 @@ export function placeholderRepo(owner: string, name: string, registered = false)
     description: "Opened from a repository link.",
     registered,
     summary:
-      "This repository is not in the seeded ledger. Funding is held by the demo contract on Base until a maintainer registers and claims.",
+      "This repository is not in the seeded ledger. A maintainer can register it.",
     links: [{ label: "GitHub", href: `https://github.com/${repoId}` }],
     hidden: false,
     icon: name.slice(0, 1).toUpperCase() || "?",

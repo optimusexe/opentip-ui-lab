@@ -17,24 +17,24 @@ import { useDemo } from "@/lib/mock/store";
 const steps = [
   ["01", "Swap one word in the URL.", "Replace github.com with opentip.tech on any repo link to open its funding page."],
   ["02", "Fund it in a supported token.", "Connect a wallet, choose an amount in ETH or USDC, and confirm. No account required. OAR is coming soon."],
-  ["03", "Maintainers claim on their schedule.", "Funds are held by the contract and belong to the maintainer the moment they land. They withdraw whenever they choose."],
+  ["03", "Maintainers claim on their schedule.", "The balance belongs to the maintainer the moment funding lands. They withdraw whenever they choose."],
 ];
 
 const trust = [
-  ["01", "Non-custodial by design.", "Funds go to a public smart contract, never to an Opentip account. Only the registered payout wallet can withdraw a maintainer’s balance."],
+  ["01", "Non-custodial by design.", "Funding never sits in an Opentip account. Only the registered payout wallet can withdraw a maintainer’s balance."],
   ["02", "ETH and USDC today.", "Accept ETH or USDC with no extra setup. OAR is coming soon."],
-  ["03", "Fully verifiable.", "Every contribution, claim, and fee is recorded on Base and can be opened in this demo’s explorer."],
+  ["03", "Fully verifiable.", "Every contribution, claim, and fee is on the public record and can be opened in this demo’s explorer."],
   ["04", "Transparent pricing.", "A flat 5% platform fee, capped at 10%. Maintainers receive 95% of every contribution."],
 ];
 
 const faqs = [
   ["Do I need an account to fund a repo?", "No. Connect a wallet, choose ETH or USDC, and confirm. Funding does not require an Opentip account."],
   ["If I send ETH, does the maintainer receive ETH?", "Yes. A contribution stays in the token you send. ETH is claimable as ETH, and USDC as USDC."],
-  ["What chain does this run on?", "Base. Contributions, claims, and fees are on Base and visible on the public record."],
+  ["What chain does this run on?", "Base. Contributions, claims, and fees are on the public record."],
   ["Can anyone claim any repo’s funds?", "No. Claiming requires the payout wallet registered for that repo. Registration happens after a maintainer signs in with GitHub and Opentip verifies ownership or maintainer access."],
   ["Has the contract been audited?", "The contract is public and verifiable. Read the source and the on-chain record before you send funds."],
-  ["What happens if a repo changes owner?", "The payout address does not follow GitHub on its own. The registered wallet can update it, and Opentip can reassign it after the new maintainer verifies access. Funds stay in the contract until they are claimed."],
-  ["Isn’t the contract centralized?", "Funds are held by the contract, not by Opentip. An owner key can pause funding, registrations, payout-address updates, and claims; set the fee to any rate up to a hard 10% cap; and reassign a payout address. It cannot withdraw a maintainer’s pending balance — only the current payout address can claim it. The owner can withdraw the separate fee balance. Those actions are public."],
+  ["What happens if a repo changes owner?", "The payout address does not follow GitHub on its own. The registered wallet can update it, and Opentip can reassign it after the new maintainer verifies access."],
+  ["Isn’t the contract centralized?", "An owner key can pause funding, registrations, payout-address updates, and claims; set the fee to any rate up to a hard 10% cap; and reassign a payout address. It cannot withdraw a maintainer’s pending balance — only the current payout address can claim it. The owner can withdraw the separate fee balance. Those actions are public."],
 ];
 
 export default function HomePage() {

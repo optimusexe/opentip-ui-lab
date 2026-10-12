@@ -370,7 +370,7 @@ export const useDemo = create<DemoState>()(
                 registered: true,
                 payoutAddress,
                 registeredAt: timestamp,
-                summary: "Registered on Opentip. Funds are held by the contract on Base until maintainers claim.",
+                summary: "Registered on Opentip.",
                 links: [{ label: "GitHub", href: `https://github.com/${repoId}` }],
                 hidden: false,
                 icon: name.slice(0, 1).toUpperCase(),
@@ -543,8 +543,8 @@ export const useDemo = create<DemoState>()(
         set((s) => ({ displayNames: { ...s.displayNames, [address]: name } })),
     }),
     {
-      name: "opentip-ledger-v2",
-      version: 2,
+      name: "opentip-ledger-v3",
+      version: 3,
       skipHydration: true,
       partialize: (state) => {
         const data = { ...state } as Partial<DemoState>;

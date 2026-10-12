@@ -82,7 +82,7 @@ export default function RepoPage({ params }: { params: Promise<{ owner: string; 
 
       {!record.registered ? (
         <p className="mt-4 rounded-[10px] border border-border bg-muted px-4 py-3 text-sm">
-          Not claimed yet. Funds wait in the contract until a maintainer registers.
+          Not claimed yet. A maintainer can register this page.
         </p>
       ) : null}
 

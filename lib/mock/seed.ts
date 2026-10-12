@@ -133,7 +133,7 @@ export function createSeed(): DemoData {
         payoutAddress: ADDR.vercel,
         registeredAt: now - 120 * day,
         summary:
-          "Next.js is the React framework for the web. It handles routing, rendering, and deployment so product teams can ship full-stack apps. Funding on this page is held by the Opentip contract on Base until maintainers claim it.",
+          "Next.js is the React framework for the web. It handles routing, rendering, and deployment so product teams can ship full-stack apps.",
         links: [
           { label: "Site", href: "https://nextjs.org" },
           { label: "GitHub", href: "https://github.com/vercel/next.js" },
@@ -242,7 +242,7 @@ export function createSeed(): DemoData {
         name: "signal-desk",
         description: "A local-first inbox for maintainer mail.",
         registered: false,
-        summary: "Not claimed yet. Funds sent here wait in the contract until a maintainer registers.",
+        summary: "Not claimed yet. A maintainer can register this page.",
         links: [{ label: "GitHub", href: "https://github.com/kofi/signal-desk" }],
         hidden: false,
         icon: "K",
@@ -386,7 +386,7 @@ export function createSeed(): DemoData {
         userId: "user_vercel",
         type: "claim_available",
         title: "Balance ready to claim",
-        body: "Next.js has a pending balance on Base.",
+        body: "Next.js has a pending balance.",
         read: false,
         createdAt: now - 2 * hour,
       },

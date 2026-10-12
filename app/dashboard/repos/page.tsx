@@ -30,7 +30,7 @@ export default function DashboardReposPage() {
   return (
     <div>
       <h1 className="font-display text-4xl">Your repos</h1>
-      <p className="mt-2 text-sm text-muted-foreground">Pending balances stay in the contract until you claim them.</p>
+      <p className="mt-2 text-sm text-muted-foreground">Claim a pending balance whenever you want.</p>
       {repos.length === 0 ? (
         <div className="mt-6 rounded-[10px] border border-dashed border-border px-4 py-10 text-center">
           <p className="font-medium">No registered repos</p>

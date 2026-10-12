@@ -107,7 +107,7 @@ export default function OnboardingPage() {
           <section className="flex flex-col gap-3 border-t border-border pt-6">
             <h2 className="text-xl font-medium">Welcome to Opentip</h2>
             <p className="font-mono text-sm">{shortAddr(address)} <span className="ml-2 rounded bg-foreground px-1.5 py-0.5 text-[10px] text-background">SMART</span></p>
-            <p className="text-sm text-muted-foreground">You are set up. Fund the wallet with ETH or USDC on Base, then register a repo.</p>
+            <p className="text-sm text-muted-foreground">You are set up. Fund the wallet with ETH or USDC, then register a repo.</p>
             <Button
               onClick={() => {
                 if (session.user) completeOnboarding(session.user.id);
