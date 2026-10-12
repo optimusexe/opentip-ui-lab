@@ -543,8 +543,8 @@ export const useDemo = create<DemoState>()(
         set((s) => ({ displayNames: { ...s.displayNames, [address]: name } })),
     }),
     {
-      name: "opentip-ledger-v1",
-      version: 1,
+      name: "opentip-ledger-v2",
+      version: 2,
       skipHydration: true,
       partialize: (state) => {
         const data = { ...state } as Partial<DemoState>;

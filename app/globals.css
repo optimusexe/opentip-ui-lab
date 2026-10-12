@@ -105,13 +105,13 @@
   --secondary-foreground: #f4f4f0;
   --muted: #1a1d1b;
   --muted-foreground: #a1a6a2;
-  --accent: #1c1c33;
-  --accent-foreground: #8b8bf5;
+  --accent: #182248;
+  --accent-foreground: #5b6cff;
   --destructive: #f87171;
   --border: #232825;
   --input: #2a2e2b;
-  --ring: #8b8bf5;
-  --brand: #8b8bf5;
+  --ring: #5b6cff;
+  --brand: #5b6cff;
   --pending: #f5b942;
   --fee: #3a3f3c;
   --chart-1: oklch(0.87 0 0);
@@ -196,7 +196,7 @@
   width: 1.7rem;
   height: 1.7rem;
   flex: none;
-  background: var(--brand);
+  background: #2a2ad6;
   -webkit-mask: url("/mark.png") center / contain no-repeat;
   mask: url("/mark.png") center / contain no-repeat;
 }

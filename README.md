@@ -15,7 +15,7 @@ Open http://localhost:3000. No environment variables are required. `npm run buil
 
 ## What is fake
 
-All repos, balances, funding, claims, and accounts live in the browser under the localStorage key `opentip-ledger-v1`. Transactions wait about a second, then write a fake hash. ETH is priced at $3,200 so the $1 minimum can be checked. USDC is $1. Any `owner/repo` path opens a funding page, including ones that are not in the seed.
+All repos, balances, funding, claims, and accounts live in the browser under the localStorage key `opentip-ledger-v2`. Older demo data under `opentip-ledger-v1` is ignored, so the seeded totals load again. Transactions wait about a second, then write a fake hash. ETH is priced at $3,200 so the $1 minimum can be checked. USDC is $1. Any `owner/repo` path opens a funding page, including ones that are not in the seed.
 
 ## Personas
 
