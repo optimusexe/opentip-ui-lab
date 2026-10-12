@@ -6,7 +6,7 @@ import { AppShell } from "@/components/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { SplitBar } from "@/components/split-bar";
 import { CONTRACT_ADDRESS } from "@/lib/constants";
-import { formatAmount, formatStamp, shortAddr } from "@/lib/format";
+import { formatAmount, formatStamp, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export default function ExplorerPage({ params }: { params: Promise<{ hash: string }> }) {
@@ -19,8 +19,7 @@ export default function ExplorerPage({ params }: { params: Promise<{ hash: strin
 
   return (
     <AppShell>
-      <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Mock explorer · Base</p>
-      <h1 className="mt-2 font-display text-4xl">Transaction</h1>
+      <h1 className="font-display text-4xl">Transaction</h1>
       {!row ? (
         <p className="mt-6 text-sm text-muted-foreground">No demo transaction uses this hash.</p>
       ) : (
@@ -37,7 +36,7 @@ export default function ExplorerPage({ params }: { params: Promise<{ hash: strin
             {"repoId" in row && row.repoId ? (
               <div className="flex justify-between gap-3">
                 <dt className="text-muted-foreground">Repo</dt>
-                <dd><Link className="font-mono text-xs text-brand" href={`/${row.repoId}`}>{row.repoId}</Link></dd>
+                <dd><Link className="text-sm font-medium text-brand" href={`/${row.repoId}`}>{repoTitle(row.repoId)}</Link></dd>
               </div>
             ) : null}
             {"amount" in row && row.amount && "token" in row && row.token ? <Item k="Amount" v={formatAmount(row.amount, row.token)} /> : null}

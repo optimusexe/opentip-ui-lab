@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { AppShell } from "@/components/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { CONTRACT_ADDRESS } from "@/lib/constants";
-import { formatAmount, formatUsd, relTime, shortAddr } from "@/lib/format";
+import { formatAmount, formatUsd, relTime, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 import { cn } from "cn";
 
@@ -31,8 +31,7 @@ export function AdminFrame({ section }: { section: string }) {
 
   return (
     <AppShell>
-      <div className="mb-4 flex items-center justify-between">
-        <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Admin · read only</p>
+      <div className="mb-4 flex items-center justify-end">
         <Badge variant="outline">Demo</Badge>
       </div>
       <div className="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)]">
@@ -48,7 +47,7 @@ export function AdminFrame({ section }: { section: string }) {
           {section === "contract" ? <Block title="Contract" rows={[["Address", CONTRACT_ADDRESS], ["Fee", "5%"], ["Cap", "10%"], ["Network", "Base"], ["Pause", "Not paused"]]} /> : null}
           {section === "registrar" ? <Block title="Registrar" rows={[["Mode", "GitHub ownership"], ["Reassign", "After verification"], ["Auto-follow GitHub", "No"]]} /> : null}
           {section === "repos" ? (
-            <List title="Repos" rows={repos.map((repo) => [repo.repoId, repo.registered ? "Registered" : "Unclaimed", formatUsd(repo.fundedUsd)])} />
+            <List title="Repos" rows={repos.map((repo) => [repoTitle(repo.repoId), repo.registered ? "Registered" : "Unclaimed", formatUsd(repo.fundedUsd)])} />
           ) : null}
           {section === "sponsorship" ? <Block title="Gas sponsorship" rows={[["Paymaster", "Demo"], ["Sponsored sends today", String(txs.filter((tx) => tx.gasSponsored).length)], ["Status", "Active"]]} /> : null}
           {section === "tokens" ? <Block title="Tokens" rows={[["ETH", "Live"], ["USDC", "Live"], ["OAR", "Coming soon"]]} /> : null}
@@ -56,7 +55,7 @@ export function AdminFrame({ section }: { section: string }) {
           {section === "admins" ? <Block title="Admins" rows={[["vercel", "owner"], ["Added", "Seed"]]} /> : null}
           {section === "migrate" ? <Block title="Migrate" rows={[["Deadline", "Not set"], ["Status", "Idle"], ["Note", "Read-only in this demo"]]} /> : null}
           {section === "activity" ? (
-            <List title="Recent funding" rows={fundings.slice(0, 8).map((row) => [row.repoId, formatAmount(row.amount, row.token), relTime(row.timestamp), shortAddr(row.txHash)])} />
+            <List title="Recent funding" rows={fundings.slice(0, 8).map((row) => [repoTitle(row.repoId), formatAmount(row.amount, row.token), relTime(row.timestamp), shortAddr(row.txHash)])} />
           ) : null}
         </div>
       </div>

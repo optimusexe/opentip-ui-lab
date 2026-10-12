@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { formatUsd } from "@/lib/format";
+import { formatUsd, repoTitle } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export default function ReposPage() {
@@ -16,7 +16,7 @@ export default function ReposPage() {
     const q = query.trim().toLowerCase();
     return repos
       .filter((repo) => repo.registered && !repo.hidden)
-      .filter((repo) => !q || repo.repoId.includes(q) || repo.description.toLowerCase().includes(q))
+      .filter((repo) => !q || repo.repoId.includes(q) || repoTitle(repo.repoId).toLowerCase().includes(q) || repo.description.toLowerCase().includes(q))
       .sort((a, b) => {
         if (sort === "funders") return b.funderCount - a.funderCount;
         if (sort === "recent") return (b.registeredAt ?? 0) - (a.registeredAt ?? 0);
@@ -55,7 +55,7 @@ export default function ReposPage() {
               <Link href={`/${repo.repoId}`} className="flex items-center gap-3 px-4 py-3 hover:bg-muted/60">
                 <span className="flex size-9 items-center justify-center rounded-[8px] border border-border font-display">{repo.icon}</span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-mono text-sm">{repo.repoId}</span>
+                  <span className="block text-sm font-medium">{repoTitle(repo.repoId)}</span>
                   <span className="block truncate text-xs text-muted-foreground">{repo.description}</span>
                 </span>
                 <Badge variant="outline" className="hidden sm:inline-flex">{repo.language}</Badge>

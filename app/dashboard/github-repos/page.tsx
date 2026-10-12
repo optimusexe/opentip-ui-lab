@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useDemo } from "@/lib/mock/store";
 import { useSession } from "@/lib/mock/use-session";
+import { repoTitle } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -38,7 +39,7 @@ export default function GithubReposPage() {
             return (
               <li key={id} className="flex flex-wrap items-center justify-between gap-3 rounded-[10px] border border-border px-4 py-3">
                 <div>
-                  <p className="font-mono text-sm">{id}</p>
+                  <p className="text-sm font-medium">{repoTitle(repo.name)}</p>
                   <p className="text-xs text-muted-foreground">{repo.description}</p>
                 </div>
                 {registered ? <Badge variant="outline">Registered</Badge> : <Button size="sm" render={<Link href={`/${id}`} />}>Register</Button>}

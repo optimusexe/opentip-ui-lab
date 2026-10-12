@@ -13,7 +13,7 @@ export default function ForgotPasswordPage() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-sm flex-col gap-6 py-16">
         <h1 className="font-display text-4xl">Reset password</h1>
         {sent ? (

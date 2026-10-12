@@ -65,7 +65,7 @@ function SignInInner() {
   }
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center gap-8 py-10">
         <h1 className="font-display text-5xl">Sign in</h1>
         <Button variant="ink" className="h-11" onClick={github}>Continue with GitHub</Button>

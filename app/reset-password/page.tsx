@@ -26,7 +26,7 @@ function Inner() {
 
   if (expired) {
     return (
-      <AppShell footer={false}>
+      <AppShell>
         <div className="mx-auto flex max-w-sm flex-col gap-4 py-16">
           <h1 className="font-display text-4xl">Link expired</h1>
           <p className="text-sm text-muted-foreground">This reset link is no longer valid. Request a new one.</p>
@@ -37,7 +37,7 @@ function Inner() {
   }
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-sm flex-col gap-5 py-16">
         <h1 className="font-display text-4xl">Choose a new password</h1>
         {done ? (

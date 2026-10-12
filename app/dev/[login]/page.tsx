@@ -3,7 +3,7 @@
 import { use, useMemo } from "react";
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { formatUsd } from "@/lib/format";
+import { formatUsd, repoTitle } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export default function DevPage({ params }: { params: Promise<{ login: string }> }) {
@@ -62,7 +62,7 @@ export default function DevPage({ params }: { params: Promise<{ login: string }>
           <li key={repo.repoId}>
             <Link href={`/${repo.repoId}`} className="flex items-center justify-between rounded-[10px] border border-border px-4 py-3 hover:bg-muted/50">
               <span>
-                <span className="block font-mono text-sm">{repo.repoId}</span>
+                <span className="block text-sm font-medium">{repoTitle(repo.repoId)}</span>
                 <span className="text-xs text-muted-foreground">{repo.registered ? "Registered" : "Not claimed yet"}</span>
               </span>
               <span className="font-mono text-sm tabular-nums">{formatUsd(repo.fundedUsd)}</span>

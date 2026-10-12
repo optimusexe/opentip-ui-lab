@@ -166,8 +166,87 @@
   background-repeat: repeat-x;
 }
 
+.host-swap {
+  display: inline-grid;
+  align-items: center;
+}
+
+.host-swap-github,
+.host-swap-opentip {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.host-swap-github {
+  color: var(--muted-foreground);
+  text-decoration: line-through;
+  animation: host-out 3.6s ease-in-out infinite;
+}
+
+.host-swap-opentip {
+  color: var(--brand);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0 0.35rem;
+  animation: host-in 3.6s ease-in-out infinite;
+}
+
+.logo-mark {
+  display: block;
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: none;
+  background: var(--brand);
+  -webkit-mask: url("/mark.png") center / contain no-repeat;
+  mask: url("/mark.png") center / contain no-repeat;
+}
+
+@keyframes host-out {
+  0%,
+  28% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  42%,
+  78% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  92%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes host-in {
+  0%,
+  28% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  42%,
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rise {
     animation: none;
+  }
+  .host-swap-github {
+    display: none;
+  }
+  .host-swap-opentip {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

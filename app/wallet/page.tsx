@@ -7,7 +7,7 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { formatAmount, formatUsd, relTime, shortAddr, tokenUsd } from "@/lib/format";
+import { formatAmount, formatUsd, relTime, repoTitle, shortAddr, tokenUsd } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 import { useSession } from "@/lib/mock/use-session";
 import type { Token } from "@/lib/mock/types";
@@ -120,7 +120,7 @@ export default function WalletPage() {
               <ul className="mt-2 flex flex-col gap-2">
                 {txs.map((tx) => (
                   <li key={tx.id} className="flex items-center justify-between gap-3 text-sm">
-                    <span className="capitalize">{tx.kind}{tx.repoId ? ` · ${tx.repoId}` : ""}</span>
+                    <span className="capitalize">{tx.kind}{tx.repoId ? ` · ${repoTitle(tx.repoId)}` : ""}</span>
                     <span className="font-mono text-xs">{tx.amount ? formatAmount(tx.amount, tx.token ?? "USDC") : tx.status}</span>
                     <span className="text-xs text-muted-foreground">{relTime(tx.createdAt)}</span>
                   </li>

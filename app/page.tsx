@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CONTRACT_ADDRESS } from "@/lib/constants";
-import { formatAmount, formatUsd, relTime, shortAddr } from "@/lib/format";
+import { formatAmount, formatUsd, relTime, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 const steps = [
@@ -47,7 +47,6 @@ export default function HomePage() {
     <AppShell>
       <section className="grid min-w-0 items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
         <div className="flex min-w-0 flex-col gap-6 pt-2">
-          <p className="text-[11px] tracking-[0.18em] text-muted-foreground uppercase">Non-custodial · On Base</p>
           <h1 className="font-display text-[2.7rem] leading-[0.92] text-balance sm:text-6xl lg:text-[4.4rem]">
             Funding for open source, from the <span className="text-brand">open market.</span>
           </h1>
@@ -59,7 +58,7 @@ export default function HomePage() {
         </div>
         <aside className="rise rounded-[10px] border border-border bg-card p-4 shadow-[0_18px_50px_-32px_rgba(11,13,12,0.45)] sm:p-5">
           <div className="flex items-center justify-between">
-            <p className="font-mono text-sm">vercel/next.js</p>
+            <p className="text-sm font-medium">{repo ? repoTitle(repo.repoId) : "Next.js"}</p>
             <Badge className="bg-pending/15 text-pending">Demo data</Badge>
           </div>
           <p className="mt-5 text-xs text-muted-foreground">Total funded</p>
@@ -129,8 +128,7 @@ export default function HomePage() {
 
       <section className="mt-16 grid items-center gap-6 rounded-[10px] border border-border p-6 lg:grid-cols-2">
         <div>
-          <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">For maintainers</p>
-          <h2 className="mt-2 font-display text-3xl sm:text-4xl">Turn your repo into a funding channel</h2>
+          <h2 className="font-display text-3xl sm:text-4xl">Turn your repo into a funding channel</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             Sign in with GitHub, verify ownership or maintainer access, and link a wallet. Setup takes about a minute. Your repo is then fundable at opentip.tech/owner/repo.
           </p>
@@ -140,8 +138,7 @@ export default function HomePage() {
           </Button>
         </div>
         <aside className="rounded-[10px] bg-muted p-5">
-          <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">After setup</p>
-          <p className="mt-3 font-mono text-sm">
+          <p className="font-mono text-sm">
             <span className="text-brand">opentip.tech/</span>owner/repo
           </p>
           <p className="mt-2 text-sm text-muted-foreground">Anyone can fund the page. You claim the balance whenever you choose.</p>

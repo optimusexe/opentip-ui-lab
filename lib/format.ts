@@ -11,6 +11,13 @@ export function shortHash(hash: string) {
   return shortAddr(hash);
 }
 
+/** Project name only, matching Opentip's capitalize(repo). Paths stay owner/repo. */
+export function repoTitle(repoIdOrName: string) {
+  const slug = repoIdOrName.includes("/") ? (repoIdOrName.split("/")[1] ?? repoIdOrName) : repoIdOrName;
+  if (!slug) return repoIdOrName;
+  return slug.charAt(0).toUpperCase() + slug.slice(1);
+}
+
 export function tokenUsd(amount: number, token: Token) {
   return token === "USDC" ? amount : amount * ETH_USD;
 }

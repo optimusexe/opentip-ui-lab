@@ -44,7 +44,7 @@ export default function OnboardingPage() {
   }
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-md flex-col gap-8 py-10">
         <div>
           <h1 className="font-display text-5xl">Set up Opentip</h1>

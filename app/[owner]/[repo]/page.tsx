@@ -12,7 +12,7 @@ import { NumberTicker } from "@/components/number-ticker";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { formatToken, formatUsd, tokenUsd } from "@/lib/format";
+import { formatToken, formatUsd, repoTitle, tokenUsd } from "@/lib/format";
 import { placeholderRepo } from "@/lib/mock/placeholder";
 import { pendingOf, pendingUsd, useDemo } from "@/lib/mock/store";
 import { useSession } from "@/lib/mock/use-session";
@@ -60,7 +60,7 @@ export default function RepoPage({ params }: { params: Promise<{ owner: string; 
             {record.icon}
           </span>
           <div>
-            <h1 className="font-display text-3xl sm:text-4xl">{record.repoId}</h1>
+            <h1 className="font-display text-3xl sm:text-4xl">{repoTitle(record.repoId)}</h1>
             <p className="mt-1 text-sm text-muted-foreground">{record.description}</p>
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <Badge variant="outline">{record.registered ? "Registered" : "Not claimed yet"}</Badge>

@@ -14,7 +14,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
   const receipt = useDemo((s) => s.receipts.find((item) => item.id === id));
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-md flex-col items-center py-6">
         <div className="mb-8 flex w-full items-center justify-between">
           <Link href="/" className="text-sm font-semibold">Opentip</Link>

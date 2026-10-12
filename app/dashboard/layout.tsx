@@ -23,7 +23,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <AppShell>
       <div className="grid gap-8 lg:grid-cols-[200px_minmax(0,1fr)]">
         <aside className="flex flex-col gap-1">
-          <p className="px-2 text-xs tracking-[0.14em] text-muted-foreground uppercase">Dashboard</p>
           {links.map(([href, label]) => (
             <Link
               key={href}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SplitBar } from "@/components/split-bar";
-import { formatAmount, formatStamp, shortAddr } from "@/lib/format";
+import { formatAmount, formatStamp, repoTitle, shortAddr } from "@/lib/format";
 import type { Receipt } from "@/lib/mock/types";
 
 export function ReceiptCard({ receipt }: { receipt: Receipt }) {
@@ -32,7 +32,7 @@ export function ReceiptCard({ receipt }: { receipt: Receipt }) {
         <p className="mt-3 text-sm">
           <span className="text-muted-foreground">{receipt.kind === "claim" ? "Claimed from" : "→"} </span>
           <Link href={`/${receipt.repoId}`} className="font-medium hover:text-brand">
-            {receipt.repoId}
+            {repoTitle(receipt.repoId)}
           </Link>
         </p>
         <div className="mt-5">

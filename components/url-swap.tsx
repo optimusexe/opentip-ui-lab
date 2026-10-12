@@ -44,11 +44,11 @@ export function UrlSwap({
       >
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-1.5 gap-y-1 px-2 font-mono text-[13px] sm:flex-nowrap sm:px-0">
           <span className="text-muted-foreground">https://</span>
-          <span className="text-muted-foreground line-through decoration-muted-foreground/80">github.com</span>
-          <span className="text-muted-foreground" aria-hidden>
-            →
+          <span className="host-swap" aria-hidden>
+            <span className="host-swap-github">github.com</span>
+            <span className="host-swap-opentip">opentip.tech</span>
           </span>
-          <span className="rounded-full bg-accent px-1.5 py-0.5 text-brand">opentip.tech</span>
+          <span className="sr-only">opentip.tech</span>
           <span className="text-muted-foreground">/</span>
           <input
             aria-label="Repository"

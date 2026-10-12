@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { UrlSwap } from "@/components/url-swap";
+import { repoTitle } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export function CommandSearch() {
@@ -48,7 +49,7 @@ export function CommandSearch() {
                     router.push(`/${repo.repoId}`);
                   }}
                 >
-                  <span className="font-mono text-[13px]">{repo.repoId}</span>
+                  <span className="text-sm font-medium">{repoTitle(repo.repoId)}</span>
                   <span className="text-xs text-muted-foreground">{repo.registered ? "Registered" : "Unclaimed"}</span>
                 </button>
               </li>

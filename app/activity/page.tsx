@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { SplitBar } from "@/components/split-bar";
-import { formatAmount, relTime, shortAddr } from "@/lib/format";
+import { formatAmount, relTime, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export default function ActivityPage() {
@@ -26,7 +26,7 @@ export default function ActivityPage() {
                 <p className="text-sm">
                   <span className="font-mono text-xs">{row.displayName ?? shortAddr(row.tipperAddress)}</span>
                   {" funded "}
-                  <Link href={`/${row.repoId}`} className="font-mono text-xs text-brand">{row.repoId}</Link>
+                  <Link href={`/${row.repoId}`} className="font-medium text-brand">{repoTitle(row.repoId)}</Link>
                 </p>
                 <span className="font-mono text-xs text-brand tabular-nums">+{formatAmount(row.amount, row.token)}</span>
               </div>
@@ -42,7 +42,7 @@ export default function ActivityPage() {
           {claims.map((row) => (
             <li key={row.id} className="rounded-[10px] border border-border px-4 py-3 text-sm">
               <span className="font-mono text-xs">{shortAddr(row.payoutAddress)}</span> claimed {formatAmount(row.amount, row.token)} from{" "}
-              <Link href={`/${row.repoId}`} className="font-mono text-xs text-brand">{row.repoId}</Link>
+              <Link href={`/${row.repoId}`} className="font-medium text-brand">{repoTitle(row.repoId)}</Link>
               <span className="ml-2 text-xs text-muted-foreground">{relTime(row.timestamp)}</span>
             </li>
           ))}

@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { formatUsd, shortAddr, tokenUsd } from "@/lib/format";
+import { formatUsd, repoTitle, shortAddr, tokenUsd } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
 export default function LeaderboardPage() {
@@ -37,7 +37,7 @@ export default function LeaderboardPage() {
                 <li key={repo.repoId}>
                   <Link href={`/${repo.repoId}`} className="flex items-center gap-3 rounded-[10px] border border-border px-4 py-3 hover:bg-muted/50">
                     <span className="w-6 font-mono text-sm text-brand">{index + 1}</span>
-                    <span className="flex-1 font-mono text-sm">{repo.repoId}</span>
+                    <span className="flex-1 text-sm font-medium">{repoTitle(repo.repoId)}</span>
                     <span className="text-xs text-muted-foreground">{repo.funderCount} funders</span>
                     <span className="font-mono text-sm tabular-nums">{formatUsd(repo.fundedUsd)}</span>
                   </Link>

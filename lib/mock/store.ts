@@ -3,7 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ADDR } from "@/lib/constants";
-import { fakeHash, splitAmount, tokenUsd } from "@/lib/format";
+import { fakeHash, repoTitle, splitAmount, tokenUsd } from "@/lib/format";
 import { placeholderRepo } from "@/lib/mock/placeholder";
 import { createSeed } from "@/lib/mock/seed";
 import type {
@@ -234,7 +234,7 @@ export const useDemo = create<DemoState>()(
                     userId: maintainerUser.id,
                     type: "funding_received" as const,
                     title: "Funding received",
-                    body: `${name || "A funder"} funded ${repoId} with ${amount} ${token}.`,
+                    body: `${name || "A funder"} funded ${repoTitle(repoId)} with ${amount} ${token}.`,
                     read: false,
                     txHash,
                     createdAt: timestamp,
@@ -315,7 +315,7 @@ export const useDemo = create<DemoState>()(
                   userId: maintainerUser.id,
                   type: "claim_submitted",
                   title: "Claim confirmed",
-                  body: `Claimed ${tokens.join(" and ")} from ${repoId}.`,
+                  body: `Claimed ${tokens.join(" and ")} from ${repoTitle(repoId)}.`,
                   read: false,
                   txHash: receipts[0]?.txHash,
                   createdAt: timestamp,

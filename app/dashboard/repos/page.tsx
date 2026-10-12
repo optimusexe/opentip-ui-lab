@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { formatToken, formatUsd, tokenUsd } from "@/lib/format";
+import { formatToken, formatUsd, repoTitle, tokenUsd } from "@/lib/format";
 import { pendingOf, pendingUsd, useDemo } from "@/lib/mock/store";
 import { useSession } from "@/lib/mock/use-session";
 import type { Token } from "@/lib/mock/types";
@@ -44,7 +44,7 @@ export default function DashboardReposPage() {
               <li key={repo.repoId} className="rounded-[10px] border border-border p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <Link href={`/${repo.repoId}`} className="font-mono text-sm hover:text-brand">{repo.repoId}</Link>
+                    <Link href={`/${repo.repoId}`} className="text-sm font-medium hover:text-brand">{repoTitle(repo.repoId)}</Link>
                     <p className="mt-1 font-mono text-lg tabular-nums">{formatUsd(pendingUsd(state, repo.repoId))} pending</p>
                   </div>
                   <label className="flex items-center gap-2 text-xs text-muted-foreground">

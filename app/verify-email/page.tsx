@@ -16,7 +16,7 @@ export default function VerifyEmailPage() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <AppShell footer={false}>
+    <AppShell>
       <div className="mx-auto flex w-full max-w-sm flex-col items-start gap-5 py-16">
         <h1 className="font-display text-4xl">Check your email</h1>
         <p className="text-sm text-muted-foreground">

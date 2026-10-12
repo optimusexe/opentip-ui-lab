@@ -24,10 +24,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       <TooltipProvider>
-        {ready ? children : <div className="min-h-screen bg-background" />}
-        {ready ? <Toaster /> : null}
-        {ready ? <CommandSearch /> : null}
-        {ready ? <DevPanel /> : null}
+        <div className="flex flex-1 flex-col">
+          {ready ? children : <div className="min-h-screen bg-background" />}
+          {ready ? <Toaster /> : null}
+          {ready ? <CommandSearch /> : null}
+          {ready ? <DevPanel /> : null}
+        </div>
       </TooltipProvider>
     </ThemeProvider>
   );
