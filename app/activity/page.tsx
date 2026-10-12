@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { SplitBar } from "@/components/split-bar";
 import { formatAmount, relTime, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
 
@@ -31,7 +30,6 @@ export default function ActivityPage() {
                 <span className="font-mono text-xs text-brand tabular-nums">+{formatAmount(row.amount, row.token)}</span>
               </div>
               <div className="mt-2 flex items-center gap-3">
-                <SplitBar className="max-w-40" />
                 <Link href={`/explorer/${row.txHash}`} className="font-mono text-[11px] text-muted-foreground hover:text-brand">
                   {shortAddr(row.txHash)}
                 </Link>

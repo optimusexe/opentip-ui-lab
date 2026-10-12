@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SplitBar } from "@/components/split-bar";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatToken, relTime, shortAddr } from "@/lib/format";
@@ -35,13 +34,8 @@ export function LedgerTable({ rows }: { rows: Funding[] }) {
                 <TableCell className="font-mono text-xs">
                   {row.displayName ?? shortAddr(row.tipperAddress)}
                 </TableCell>
-                <TableCell>
-                  <div className="flex flex-col gap-1.5">
-                    <span className="font-mono text-xs text-brand tabular-nums">
-                      +{formatToken(row.amount, row.token)} {row.token}
-                    </span>
-                    <SplitBar className="hidden max-w-24 sm:flex" />
-                  </div>
+                <TableCell className="font-mono text-xs text-brand tabular-nums">
+                  +{formatToken(row.amount, row.token)} {row.token}
                 </TableCell>
                 <TableCell className="hidden font-mono text-xs tabular-nums sm:table-cell">
                   {formatToken(toMaintainer, row.token)}

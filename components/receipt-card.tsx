@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SplitBar } from "@/components/split-bar";
 import { formatAmount, formatStamp, repoTitle, shortAddr } from "@/lib/format";
 import type { Receipt } from "@/lib/mock/types";
 
@@ -35,9 +34,6 @@ export function ReceiptCard({ receipt }: { receipt: Receipt }) {
             {repoTitle(receipt.repoId)}
           </Link>
         </p>
-        <div className="mt-5">
-          <SplitBar />
-        </div>
       </div>
       <div className="relative border-x border-dashed border-border bg-card">
         <span className="absolute top-0 -left-3 size-6 -translate-y-1/2 rounded-full border border-border bg-background" />

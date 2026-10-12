@@ -4,7 +4,6 @@ import { use } from "react";
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { Badge } from "@/components/ui/badge";
-import { SplitBar } from "@/components/split-bar";
 import { CONTRACT_ADDRESS } from "@/lib/constants";
 import { formatAmount, formatStamp, repoTitle, shortAddr } from "@/lib/format";
 import { useDemo } from "@/lib/mock/store";
@@ -42,12 +41,9 @@ export default function ExplorerPage({ params }: { params: Promise<{ hash: strin
             {"amount" in row && row.amount && "token" in row && row.token ? <Item k="Amount" v={formatAmount(row.amount, row.token)} /> : null}
           </dl>
           {funding ? (
-            <div className="mt-4">
-              <SplitBar />
-              <p className="mt-2 text-xs text-muted-foreground">
-                Maintainers {formatAmount(funding.amount - funding.feeAmount, funding.token)} · fee {formatAmount(funding.feeAmount, funding.token)}
-              </p>
-            </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Maintainers {formatAmount(funding.amount - funding.feeAmount, funding.token)} · fee {formatAmount(funding.feeAmount, funding.token)}
+            </p>
           ) : null}
           <p className="mt-4 text-xs text-muted-foreground">Demo record for {shortAddr(decoded)}. Not a Basescan page.</p>
         </div>
